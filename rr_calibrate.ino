@@ -110,7 +110,7 @@ void loop() {
       } else {
         testFwdBackValue((short)command.toInt());
       }
-    } else if (inputString.startsWith("help")) {
+    } else if (inputString.startsWith("?") || inputString.startsWith("help")) {
       Serial.println("cl[open|close|num]");
       Serial.println("sw[min|max|num]");
       Serial.println("ud[min|max|num]");
@@ -130,6 +130,8 @@ void loop() {
       printStoredValue("Back", idxBack);
       printStoredValue("Grab", idxGrab);
       printStoredValue("LetGo", idxLetGo);
+    } else if (inputString.startsWith("ver")) {
+      Serial.println("rr_calibrate v0.1");
     }
 
     inputString="";
