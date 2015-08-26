@@ -2,6 +2,10 @@
 #include <Servo.h>
 #include <EEPROM.h>
 
+void printVersion() {
+  Serial.println("rr_calibrate v0.1");
+}
+
 const unsigned short idxLeft = 0;
 const unsigned short idxRight = 1;
 const unsigned short idxForward = 2;
@@ -37,6 +41,8 @@ void setup() {
 
   Serial.begin(9600);
   inputString.reserve(32);
+
+  printVersion();
 
   ledOff();
 }
@@ -131,7 +137,7 @@ void loop() {
       printStoredValue("Grab", idxGrab);
       printStoredValue("LetGo", idxLetGo);
     } else if (inputString.startsWith("ver")) {
-      Serial.println("rr_calibrate v0.1");
+      printVersion();
     }
 
     inputString="";
